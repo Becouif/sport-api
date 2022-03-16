@@ -1,17 +1,20 @@
 <template>
   <div>
-    <ul>
-      <li>
-        <button @click="loadGames" type="button" class="btn btn-primary">
-          Primary
-        </button>
-      </li>
+    <ul v-for="gameData in gamesData" :key="gameData.id">
+        <the-base-card-vue @click="gameData.matchUrl">
+            <h3> {{gameData.title}} </h3>
+            <h2> {{gameData.league}} </h2>
+            <p> {{gameData.thumbnail}} </p>
+            <p> {{gameData.matchDate}} </p>
+        </the-base-card-vue>
     </ul>
   </div>
 </template>
 
 <script>
+import TheBaseCardVue from "./UI/TheBaseCard.vue";
 export default {
+    components: {TheBaseCardVue},
   data() {
       return {
           gamesData: []
@@ -41,11 +44,14 @@ export default {
                })
               this.gamesData = results
             // console.log(dataSetOne[i].matchviewUrl);
-            console.log(this.gamesData.title)
+        
           }
 
         });
     },
   },
+  mounted(){
+      this.loadGames();
+  }
 };
 </script>

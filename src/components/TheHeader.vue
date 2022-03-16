@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TheClockVue from "./TheClock.vue";
+import TheClockVue from "./UI/TheClock.vue";
 
 export default {
   components: {TheClockVue},
